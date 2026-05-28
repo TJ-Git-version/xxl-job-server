@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: xxl-job-demo
+server:
+  port: 8082
+
+xxl:
+  job:
+    accessToken: felix-xxl-job
+    admin:
+      # admin??
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    executor:
+      # ?????
+      appName: xxl-job-demo
+      # ?????
+      port: 9999
+      # ???????
+      logPath: ./logs/xxl-job
