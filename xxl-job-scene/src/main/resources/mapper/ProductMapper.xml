@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.felix.xxljobscene.mapper.ProductMapper">
+    <select id="selectByLastId" resultType="com.felix.xxljobscene.domain.entity.Product">
+        select *
+        from product
+        where id > #{lastId}
+        order by id
+        limit #{pageSize}
+    </select>
+
+    <select id="selectByLastIdAndShard" resultType="com.felix.xxljobscene.domain.entity.Product">
+        select *
+        from product
+        where id > #{lastId}
+          and id % #{shardTotal} = #{shardIndex}
+        order by id
+        limit #{pageSize}
+    </select>
+</mapper>
